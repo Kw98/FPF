@@ -19,4 +19,8 @@ public class SaveFormat_Time
 [System.Serializable]
 public class SaveFormat_Player
 {
+    public int playerSkin; // 7 skin different
+    public float posX;
+    public float posY;
+    public float posZ;
 }

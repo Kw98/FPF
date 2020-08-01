@@ -39,4 +39,11 @@ public class PlayerSettings : MonoBehaviour
     }
 
 
+    public void CreatePlayer()
+    {
+     
+    }
+
+
+
 }

@@ -425,6 +425,13 @@ GameObject:
   m_Component:
   - component: {fileID: 400022}
   - component: {fileID: 9500000}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 14300000}
+  - component: {fileID: 114228581297445204}
+  - component: {fileID: 114647277514057144}
+  - component: {fileID: 114631912533474596}
+>>>>>>> 812ef08... FarmingGrid Sys
   m_Layer: 0
   m_Name: Char_2
   m_TagString: Untagged
@@ -467,6 +474,86 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
+=======
+--- !u!143 &14300000
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.8
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1.46, z: 0}
+--- !u!114 &114228581297445204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939f063999141264b80a43b2b3634f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEye: 0
+  rightEye: 0
+  Mouth: 0
+  faceAnims: {fileID: 114647277514057144}
+--- !u!114 &114647277514057144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43610ed66d3ed1f4aab3153e77ea4913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouths: []
+  leftEye:
+  - {fileID: 100090}
+  - {fileID: 100106}
+  - {fileID: 100068}
+  - {fileID: 100124}
+  - {fileID: 100064}
+  - {fileID: 100110}
+  - {fileID: 100142}
+  - {fileID: 100148}
+  rightEye:
+  - {fileID: 100094}
+  - {fileID: 100058}
+  - {fileID: 100140}
+  - {fileID: 100060}
+  - {fileID: 100076}
+  - {fileID: 100092}
+  - {fileID: 100066}
+  - {fileID: 100144}
+--- !u!114 &114631912533474596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c520946af30644987b6544a8288316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 812ef08... FarmingGrid Sys
 --- !u!1 &100024
 GameObject:
   m_ObjectHideFlags: 0

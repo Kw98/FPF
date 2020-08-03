@@ -1,19 +1,27 @@
 ﻿[System.Serializable]
 public class SaveFormat
 {
-    public string   worldName;
-    public string   difficulty;
-    public SaveFormat_Time    time;
+    public string worldName;
+    public string difficulty;
+    public SaveFormat_Time time;
+    public SaveFormat_Season season;
 }
 
 [System.Serializable]
 public class SaveFormat_Time
 {
-    public float    timePlayed; // total timeplayed no use in game
-    public float    timeInGame; // reset toutes les 24h ingame
-    public int  dayInWeek; // monday, tuesday, wednesday, thursday, friday, saturday, sunday
-    public int  dayInSaison;
-    public int  saison; // 4 saisons
+    public float timer = 480; // total timeplayed no use in game
+    public float lightIntensity = 0.7f;
+    public int  dayInSeason = 1;
+    public int  season = 0; // 4 saisons
+}
+
+[System.Serializable]
+public class SaveFormat_Season
+{
+    public bool raining = false;
+    public bool snowing = false;
+    public int degree = 20;
 }
 
 [System.Serializable]

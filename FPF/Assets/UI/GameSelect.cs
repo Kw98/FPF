@@ -19,8 +19,8 @@ public class GameSelect : MonoBehaviour
         data = saveFormat;
         filePath = path;
         name.text = data.worldName;
-        int seconds = (int)(data.time.timePlayed) % 60;
-        int minutes = (int)(data.time.timePlayed) / 60;
+        int seconds = (int)(data.time.timer) % 60;
+        int minutes = (int)(data.time.timer) / 60;
         int hours = minutes / 60;
         timePlayed.text = hours.ToString("D2") + ':' + (minutes % 60).ToString("D2") + ':' + (seconds % 60).ToString("D2");
         difficulty.text = data.difficulty;

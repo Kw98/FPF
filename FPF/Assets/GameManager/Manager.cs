@@ -12,7 +12,7 @@ public class Manager : MonoBehaviour
         data.worldName = "Default";
         data.difficulty = "Normal";
         data.time = new SaveFormat_Time();
-        data.season = new SaveFormat_Season();
+        data.weather = new SaveFormat_Weather();
     }
 
     public void NewGame(string gameName)

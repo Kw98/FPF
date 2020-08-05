@@ -33,12 +33,12 @@ public class TimeHUD : MonoBehaviour
         timeHUD.text = gt.hour + "h" + gt.minute;
         dayHUD.text = "day " + m.data.time.dayInSeason + "/" + gt.daysBySeason;
         if (m.data.time.season == 0)
-            seasonHUD.text = "printemps";
+            seasonHUD.text = "spring";
         else if (m.data.time.season == 1)
-            seasonHUD.text = "été";
+            seasonHUD.text = "summer";
         else if (m.data.time.season == 2)
-            seasonHUD.text = "automne";
+            seasonHUD.text = "autumn";
         else if (m.data.time.season == 3)
-            seasonHUD.text = "hiver";
+            seasonHUD.text = "winter";
     }
 }

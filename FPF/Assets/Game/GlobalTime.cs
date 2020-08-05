@@ -34,20 +34,6 @@ public class GlobalTime : MonoBehaviour
         hour = (int)(manager.data.time.timer % 1440) / 60;
         minute = (int)(manager.data.time.timer % 60);
 
-        //if (hour >= 5 && hour < 10)
-        //{
-        //    if (manager.data.time.lightIntensity < maxIntensity)
-        //        manager.data.time.lightIntensity += 0.0000009f * daySpeed;
-        //}
-        //else if (hour == 12)
-        //    manager.data.time.lightIntensity = maxIntensity;
-        //else if (hour > 19 && hour <= 23)
-        //{
-        //    if (manager.data.time.lightIntensity > miniIntensity)
-        //        manager.data.time.lightIntensity -= 0.000002f * nightSpeed;
-        //}
-        //else if (hour == 0)
-        //    manager.data.time.lightIntensity = miniIntensity;
         if (hour >= 6 && hour <= 20)
             manager.data.time.timer += Time.deltaTime * daySpeed;
         else
@@ -55,7 +41,6 @@ public class GlobalTime : MonoBehaviour
         int newHour = (int)(manager.data.time.timer % 1440) / 60;
         if (hour != newHour)
         {
-            Debug.Log("diff");
             if (newHour > 3 && newHour < 12)
             {
                 if (manager.data.time.lightIntensity < maxIntensity)

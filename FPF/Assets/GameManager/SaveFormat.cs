@@ -4,7 +4,7 @@ public class SaveFormat
     public string worldName;
     public string difficulty;
     public SaveFormat_Time time;
-    public SaveFormat_Season season;
+    public SaveFormat_Weather weather;
 }
 
 [System.Serializable]
@@ -17,10 +17,12 @@ public class SaveFormat_Time
 }
 
 [System.Serializable]
-public class SaveFormat_Season
+public class SaveFormat_Weather
 {
     public bool raining = false;
     public bool snowing = false;
+    public int humidity = 40;
+    public int wind = 0;
     public int degree = 20;
 }
 

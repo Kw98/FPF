@@ -11,8 +11,6 @@ public class Manager : MonoBehaviour
         filePath = Application.persistentDataPath + "\\save-Default";
         data.worldName = "Default";
         data.difficulty = "Normal";
-        data.time = new SaveFormat_Time();
-        data.weather = new SaveFormat_Weather();
     }
 
     public void NewGame(string gameName)

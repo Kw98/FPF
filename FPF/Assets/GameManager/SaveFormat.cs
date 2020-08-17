@@ -4,6 +4,7 @@ public class SaveFormat
     public string   worldName;
     public string   difficulty;
     public SaveFormat_Time    time;
+    public SaveFormat_Player player;
 }
 
 [System.Serializable]

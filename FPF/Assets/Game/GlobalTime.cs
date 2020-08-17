@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,15 @@ using UnityEngine;
 public class GlobalTime : MonoBehaviour
 {
     private Manager manager;
-    private float   lastTime;
+    public int hour;
+    public int minute;
+    public float daySpeed;
+    public float nightSpeed;
+    [SerializeField] public int daysBySeason;
+    [SerializeField] private float miniIntensity;
+    [SerializeField] private float maxIntensity;
     // Start is called before the first frame update
+    // 0.0416666667
     void Start()
     {
         if (!GameObject.Find("GameManager")) {
@@ -15,14 +23,43 @@ public class GlobalTime : MonoBehaviour
             return;
         }
         manager = GameObject.Find("GameManager").GetComponent<Manager>();
-        lastTime = Time.time;
+        hour = (int)(manager.data.time.timer % 1440) / 60;
+        minute = (int)(manager.data.time.timer % 60);
     }
 
     // Update is called once per frame
+    // 1440min = 24h * 60min
     void Update()
     {
-        manager.data.time.timePlayed += Time.time - lastTime;
-        lastTime = Time.time;
-        Debug.Log(manager.data.time.timePlayed);
+        hour = (int)(manager.data.time.timer % 1440) / 60;
+        minute = (int)(manager.data.time.timer % 60);
+
+        if (hour >= 6 && hour <= 20)
+            manager.data.time.timer += Time.deltaTime * daySpeed;
+        else
+            manager.data.time.timer += Time.deltaTime * nightSpeed;
+        int newHour = (int)(manager.data.time.timer % 1440) / 60;
+        if (hour != newHour)
+        {
+            if (newHour > 3 && newHour < 12)
+            {
+                if (manager.data.time.lightIntensity < maxIntensity)
+                    manager.data.time.lightIntensity += 0.09f;
+            } else if (newHour > 16 || newHour == 0)
+            {
+                if (manager.data.time.lightIntensity > miniIntensity)
+                    manager.data.time.lightIntensity -= 0.09f;
+            }
+        }
+
+        if (hour == 23 && (int)(manager.data.time.timer % 1440) / 60 == 0)
+        {
+            manager.data.time.dayInSeason += 1;
+            if (manager.data.time.dayInSeason > daysBySeason)
+            {
+                manager.data.time.dayInSeason = 1;
+                manager.data.time.season = (manager.data.time.season + 1) % 4;
+            }
+        }
     }
 }

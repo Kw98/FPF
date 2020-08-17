@@ -9,9 +9,9 @@ public class GlobalTime : MonoBehaviour
     private Manager manager;
     public int hour;
     public int minute;
+    public float daySpeed;
+    public float nightSpeed;
     [SerializeField] public int daysBySeason;
-    [SerializeField] private float daySpeed;
-    [SerializeField] private float nightSpeed;
     [SerializeField] private float miniIntensity;
     [SerializeField] private float maxIntensity;
     // Start is called before the first frame update

@@ -6,6 +6,7 @@ public class SaveFormat
     public SaveFormat_Time time = new SaveFormat_Time();
     public SaveFormat_Weather weather = new SaveFormat_Weather();
     public SaveFormat_Player player = new SaveFormat_Player();
+    public SaveFormat_DirtPile[] dp;
 }
 
 [System.Serializable]
@@ -48,10 +49,10 @@ public class SaveFormat_Spe
     public void GainExp(int amount)
     {
         actualExp += amount;
-        if (actualExp >= amount && actualLvl != maxLvl)
+        while (actualExp >= totalExpNextLvl && actualLvl != maxLvl)
         {
             actualLvl += 1;
-            totalExpNextLvl += totalExpNextLvl;
+            totalExpNextLvl *= 2;
         }
 
     }
@@ -72,4 +73,27 @@ public class SaveFormat_SpeTree
     public SaveFormat_Spe chicken = new SaveFormat_Spe();
     public SaveFormat_Spe pig = new SaveFormat_Spe();
     public SaveFormat_Spe cow = new SaveFormat_Spe();
+}
+
+[System.Serializable]
+public class SaveFormat_DirtPile
+{
+    public float posX = 0f;
+    public float posY = 0f;
+    public float posZ = 0f;
+    public int vegetebalId = 0;
+    public SaveFormat_Seed seed = new SaveFormat_Seed();
+}
+
+[System.Serializable]
+public class SaveFormat_Seed
+{
+    public float timer = 0;
+    public float totalTimer = 0;
+    public int actualHumidity = 0;
+    public int humidityLimit = 0;
+    public int degreeMini = 0;
+    public int degreeMax = 0;
+    public int windLimit = 0;
+    public int resistance = 0;
 }

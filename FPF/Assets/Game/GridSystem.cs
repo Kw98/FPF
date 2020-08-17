@@ -28,7 +28,7 @@ public class GridSystem : MonoBehaviour
             {
                 Vector3 p = GetNearestGrid(new Vector3(x, 0, z));
                 if (p != new Vector3(10000, 10000, 10000))
-                    Gizmos.DrawWireCube(p, new Vector3(1f, 0, 1f));
+                    Gizmos.DrawWireCube(p, new Vector3(2f, 0, 2f));
             }
         }
     }

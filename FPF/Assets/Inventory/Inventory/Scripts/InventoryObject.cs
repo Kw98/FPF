@@ -133,4 +133,8 @@ public class InventorySlot
     {
         amount += value;
     }
+    public int GetAmount()
+    {
+        return amount;
+    }
 }

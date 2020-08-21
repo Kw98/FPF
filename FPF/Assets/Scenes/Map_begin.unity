@@ -675,8 +675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hour: 0
   minute: 0
-  daySpeed: 3
-  nightSpeed: 4
+  daySpeed: 20
+  nightSpeed: 30
   daysBySeason: 14
   miniIntensity: 0.25
   maxIntensity: 1.3
@@ -749,6 +749,14 @@ MonoBehaviour:
   - {fileID: 4884064420404043857, guid: 5578849066ca7af4a8c606a96b58285d, type: 3}
   - {fileID: 8605219619274944055, guid: a494ce8955d4d6f49bf00833024cdd2e, type: 3}
   - {fileID: 2290326747738995340, guid: 27df89d5ee5ab534bb7a1b65dd452768, type: 3}
+  seedItemPrefabs: []
+  fruitItemPrefabs:
+  - {fileID: 2782665586960601633, guid: 8d490e85767ad3a4786a702299d2796a, type: 3}
+  - {fileID: 8709492197240929985, guid: 9a7e96e80148b234fa26e157d59b1e50, type: 3}
+  - {fileID: 5541654020337009943, guid: f17d44294f214d04e99f049b343b9dec, type: 3}
+  - {fileID: 1610561232515662950, guid: 3ea50eed308a0b4479366769b142e17e, type: 3}
+  - {fileID: 3175124364227385611, guid: bcc49d0676bb66d49871576ee44c684b, type: 3}
+  - {fileID: 6328661328606996732, guid: 74c2030f31719564bb3d168bae4bf72f, type: 3}
 --- !u!1001 &164087631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1734,7 +1742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &377637614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3462,7 +3470,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6013,12 +6021,12 @@ PrefabInstance:
     - target: {fileID: 6950635505838947962, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008480677
+      value: -0.000000008480677
       objectReference: {fileID: 0}
     - target: {fileID: 6950635505838947962, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014467274
+      value: 0.0000000014467274
       objectReference: {fileID: 0}
     - target: {fileID: 6950635505838947962, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
@@ -6043,12 +6051,12 @@ PrefabInstance:
     - target: {fileID: 6950635506075161498, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001901907
+      value: -0.000000019019074
       objectReference: {fileID: 0}
     - target: {fileID: 6950635506075161498, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000028895109
+      value: 0.0000000028895113
       objectReference: {fileID: 0}
     - target: {fileID: 6950635506075161498, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
@@ -6093,12 +6101,12 @@ PrefabInstance:
     - target: {fileID: 6950635506416359169, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000019098268
+      value: -0.000000019098268
       objectReference: {fileID: 0}
     - target: {fileID: 6950635506416359169, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003115161
+      value: 0.000000003115161
       objectReference: {fileID: 0}
     - target: {fileID: 6950635506416359169, guid: 30992a8e0cd342140b75b7543ece18bc,
         type: 3}
@@ -6142,6 +6150,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30992a8e0cd342140b75b7543ece18bc, type: 3}
+--- !u!1 &1289161381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6950635505540324106, guid: 30992a8e0cd342140b75b7543ece18bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1289161380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1289161382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289161381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a06ad6143c5c24384315cc56b24247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DpsM: {fileID: 151205710}
+  inventory: {fileID: 1289161383}
+  terrainTool:
+  - Hoe
+  - Arrosoire
+  item:
+    Name: Hoe
+    Id: 0
+    buffs: []
+  dirtPilePrefab: {fileID: 1000011580534764, guid: c26cacf51e485c54b95fdbf9ad976ddf,
+    type: 3}
+  dirtPilePreview: {fileID: 0}
+--- !u!114 &1289161383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6791882560069655007, guid: 30992a8e0cd342140b75b7543ece18bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1289161380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cffb82ced25ff164db72d906356b408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1298672003
 PrefabInstance:
   m_ObjectHideFlags: 0

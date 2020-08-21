@@ -137,4 +137,23 @@ public class Seed : MonoBehaviour
         actualHumidity = 100;
     }
 
+    public bool IsGrowthEnded()
+    {
+        return timer >= totalTimer;
+    }
+
+    public Dictionary<string, int> RecoltFruit()
+    {
+        Dictionary<string, int> recolt = new Dictionary<string, int>();
+        int maxfruit = ((spec.actualLvl * 3) / spec.maxLvl) + 1;
+        int maxseed = ((spec.actualLvl * 2) / spec.maxLvl) + 1;
+        recolt.Add("seed", maxseed);
+        recolt.Add("fruit", maxfruit);
+        if (timer < totalTimer)
+        {
+            recolt["fruit"] = 0;
+            recolt["seed"] = 0;
+        }
+        return recolt;
+    }
 }

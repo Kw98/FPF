@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b0e29dfdc66a34d919414022de3e6c, type: 3}
   m_Name: Money
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 0}
+  Id: 3
+  uiDisplay: {fileID: 194336859228450555, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
+    type: 3}
   type: 2
   description: 
   buffs: []

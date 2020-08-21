@@ -13,12 +13,13 @@ public class DisplayInventory : MonoBehaviour
     public GameObject inventoryPrefab;
     public InventoryObject inventory;
     public SpriteRenderer itemEquipedSprite;
-    public Item itemequiped;
     public int X_START;
     public int Y_START;
     public int X_SPACE_BETWEEN_ITEM;
     public int NUMBER_OF_COLUMN;
     public int Y_SPACE_BETWEEN_ITEMS;
+    public int money = 0;
+    public GameObject inventoryManager;
     Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
     void Start()
     {
@@ -44,8 +45,6 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
             AddEvent(obj, EventTriggerType.PointerClick, delegate { equipeItem(obj); });
-
-
             itemsDisplayed.Add(obj, inventory.Container.Items[i]);
         }
     }
@@ -124,9 +123,11 @@ public class DisplayInventory : MonoBehaviour
     public void equipeItem(GameObject obj)
     {
         var item = inventory.database.GetItem[itemsDisplayed[obj].ID];
-        print(item);
-        itemequiped = new Item(inventory.database.GetItem[itemsDisplayed[obj].ID]);
         itemEquipedSprite.sprite = item.uiDisplay;
+
+        var e = inventoryManager.GetComponent<InvenotryManager>();
+        e.itemequiped = new Item(inventory.database.GetItem[itemsDisplayed[obj].ID]);
+        //itemequiped = new Item(inventory.database.GetItem[itemsDisplayed[obj].ID]);
     }
 
     public Vector3 GetPosition(int i)

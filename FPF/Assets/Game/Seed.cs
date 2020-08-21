@@ -7,6 +7,7 @@ public class Seed : MonoBehaviour
 {
     [SerializeField] private float maxHumidityLost = 2f;
     [SerializeField] private float maxHumidityWin = 2f;
+    [SerializeField] private int seedId = 0;
     [SerializeField] private SaveFormat_Spe spec;
     [SerializeField] private GlobalTime gt;
     [SerializeField] private Manager m;
@@ -52,14 +53,30 @@ public class Seed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!GameObject.Find("GameManager"))
+        if (!GameObject.Find("GameManager") && !GameObject.Find("GlobalSystem"))
         {
             Destroy(this);
             return;
         }
         m = GameObject.Find("GameManager").GetComponent<Manager>();
+        gt = GameObject.Find("GlobalSystem").GetComponent<GlobalTime>();
+
         if (timer != 0)
             return;
+
+        if (seedId == 0)
+            spec = m.data.player.specialisation.carrot;
+        else if (seedId == 1)
+            spec = m.data.player.specialisation.tomato;
+        else if (seedId == 2)
+            spec = m.data.player.specialisation.corn;
+        else if (seedId == 3)
+            spec = m.data.player.specialisation.eggplant;
+        else if (seedId == 4)
+            spec = m.data.player.specialisation.turnip;
+        else if (seedId == 5)
+            spec = m.data.player.specialisation.pumpkin;
+
         if (spec.actualLvl != 1)
             totalTimer -= ((totalTimer / 2f) * spec.actualLvl) / 100f;
         actualHumidity = 50;
@@ -112,6 +129,12 @@ public class Seed : MonoBehaviour
             humidity += maxHumidityWin * ((m.data.weather.humidity - 50f) / 50f);
             actualHumidity = Mathf.RoundToInt(humidity);
         }
+    }
+
+    public void Humidify()
+    {
+        humidity = 100f;
+        actualHumidity = 100;
     }
 
 }

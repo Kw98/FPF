@@ -20,6 +20,8 @@ public class WeatherHUD : MonoBehaviour
             return;
         }
         m = GameObject.Find("GameManager").GetComponent<Manager>();
+        if (m)
+            Debug.Log("not null");
     }
 
     public void UpdateWeatherHUD()

@@ -11,11 +11,13 @@ public class Manager : MonoBehaviour
         filePath = Application.persistentDataPath + "\\save-Default";
         data.worldName = "Default";
         data.difficulty = "Normal";
+        data.dpSDictionaryLocation = Application.persistentDataPath + "\\save-Default-dpS";
     }
 
     public void NewGame(string gameName)
     {
         filePath = Application.persistentDataPath + "\\save-" +  Random.Range(1, 1000000).ToString("D6") + '-' + gameName;
+        data.dpSDictionaryLocation = Application.persistentDataPath + "\\save-" + Random.Range(1, 1000000).ToString("D6") + "-" + gameName + "-dpS";
         Debug.Log(filePath);
         data.worldName = gameName;
         data.difficulty = "Normal";

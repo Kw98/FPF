@@ -6,7 +6,7 @@ public class SaveFormat
     public SaveFormat_Time time = new SaveFormat_Time();
     public SaveFormat_Weather weather = new SaveFormat_Weather();
     public SaveFormat_Player player = new SaveFormat_Player();
-    public SaveFormat_DirtPile[] dp;
+    public string dpSDictionaryLocation;
 }
 
 [System.Serializable]

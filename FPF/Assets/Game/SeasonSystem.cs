@@ -74,7 +74,6 @@ public class SeasonSystem : MonoBehaviour
             m.data.weather.snowing = m.data.weather.raining;
             m.data.weather.raining = false;
         }
-        Debug.Log(m.data.weather.raining);
         rain.SetActive(m.data.weather.raining);
         snow.SetActive(m.data.weather.snowing);
         wHUD.UpdateWeatherHUD();

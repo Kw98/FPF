@@ -28,6 +28,21 @@ public class InventoryObject : ScriptableObject
         SetEmptySlot(_item, _amount);
 
     }
+
+    public void RemoveItem(Item _item, int _amount)
+    {
+
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID == _item.Id)
+            {
+                Container.Items[i].RemoveAmount(_amount);
+                return;
+            }
+        }
+
+    }
+
     public InventorySlot SetEmptySlot(Item _item, int _amount)
     {
         for (int i = 0; i < Container.Items.Length; i++)
@@ -133,8 +148,25 @@ public class InventorySlot
     {
         amount += value;
     }
+    public void RemoveAmount(int value)
+    {
+        if (amount == 1)
+        {
+            ID = -1;
+            item = null;
+            amount = 0;
+        }
+        else
+        {
+            amount -= value;
+        }
+    }
     public int GetAmount()
     {
         return amount;
+    }
+    public string GetName()
+    {
+        return(item.Name);
     }
 }

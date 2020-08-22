@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Sellitem : MonoBehaviour
 {
@@ -11,6 +13,12 @@ public class Sellitem : MonoBehaviour
     public ItemObject money;
     public string NpcItem;
     public ItemObject NpcItemSell;
+    public bool friendly = false;
+    public GameObject activeQuete;
+    public Image friendlyicon;
+    public Sprite newicon;
+    public TextMeshProUGUI frelndlyText;
+    public int prize;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +41,6 @@ public class Sellitem : MonoBehaviour
                         inventory.RemoveItem(inventory.Container.Items[a].item, 1);
                         inventory.AddItem(new Item(NpcItemSell), 1);
                     }
-                    print(inventory.Container.Items[a].GetAmount());
-                    print("pas de thune");
                     return;
                 }
             }
@@ -46,16 +52,36 @@ public class Sellitem : MonoBehaviour
             {
                 if (inventory.Container.Items[i].GetName() == NpcItem)
                 {
-                    inventory.AddItem(new Item(money), 2);
+                    inventory.AddItem(new Item(money), prize);
                     inventory.RemoveItem(inventory.Container.Items[i].item, 1);
                     return;
 
                 }
             }
         }
+        if (Input.GetKeyDown("m"))
+        {
+            activeQuete.SetActive(true);
+            for (int i = 0; i < inventory.Container.Items.Length; i++)
+            {
+                if (inventory.Container.Items[i].GetName() == "Quete")
+                {
+                    inventory.RemoveItem(inventory.Container.Items[i].item, 1);
+                    validatequete();
+                    return;
+                }
+            }
+
+
+        }
+
+      
     }
     void OnTriggerEnter(Collider other)
     {
+        if (friendly == true)
+            activeQuete.SetActive(false);
+
         if (other.tag == "Player")
         {
 
@@ -93,6 +119,16 @@ public class Sellitem : MonoBehaviour
             }
             displayDialogue.SetActive(active);
         }
+    }
+
+    public void validatequete()
+    {
+        activeQuete.SetActive(false);
+        frelndlyText.text = "friendly";
+        friendlyicon.sprite = newicon;
+        friendly = true;
+        prize = prize * 2;
+
     }
 
     public void TriggerDialogue()

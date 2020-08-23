@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a19cd8ef277d0c4ba682129da249c62, type: 3}
-  m_Name: npc_food
+  m_Name: Milk
   m_EditorClassIdentifier: 
-  Id: 14
-  uiDisplay: {fileID: 3362789639699432236, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
+  Id: 15
+  uiDisplay: {fileID: -5448086938416646657, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
     type: 3}
   type: 0
   description: 

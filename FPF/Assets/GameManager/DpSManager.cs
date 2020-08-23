@@ -26,6 +26,13 @@ public class DpSManager : MonoBehaviour
         Load();
     }
 
+    private void Update()
+    {
+        var toRemove = DpS.Where(pair => !GameObject.Find(pair.Key.ToString("D6"))).ToList();
+        foreach (var v in toRemove)
+            DpS.Remove(v.Key);
+    }
+
     public bool AddDirtPile(GameObject dp)
     {
         foreach (KeyValuePair<int, SaveFormat_DirtPile> dps in DpS)
@@ -33,9 +40,9 @@ public class DpSManager : MonoBehaviour
             if (dps.Value.posX == dp.transform.position.x && dps.Value.posZ == dp.transform.position.z)
                 return false;
         }
-        int key = Random.Range(-99999, 99999);
+        int key = Random.Range(-999999, 999999);
         while (DpS.ContainsKey(key))
-            key = Random.Range(-99999, 99999);
+            key = Random.Range(-999999, 999999);
         dp.name = key.ToString("D6");
         SaveFormat_DirtPile dirtpile = new SaveFormat_DirtPile();
         dirtpile.posX = dp.transform.position.x;
@@ -108,6 +115,7 @@ public class DpSManager : MonoBehaviour
                         //    Instantiate(seedItemPrefabs[dp.Value.vegetebalId], new Vector3(basepos.x + f / 8, basepos.y + f / 8, basepos.z + f / 8), Quaternion.identity);
                         recolted = true;
                         key = dp.Key;
+                        LvlUpSpec(dp.Value.vegetebalId);
                     }
                 }
                 return;
@@ -118,6 +126,22 @@ public class DpSManager : MonoBehaviour
             DpS.Remove(key);
             Destroy(go);
         }
+    }
+
+    private void LvlUpSpec(int vegetebalId)
+    {
+        if (vegetebalId == 0)
+            manager.data.player.specialisation.carrot.GainExp(500);
+        else if (vegetebalId == 1)
+            manager.data.player.specialisation.tomato.GainExp(500);
+        else if (vegetebalId == 2)
+            manager.data.player.specialisation.corn.GainExp(500);
+        else if (vegetebalId == 3)
+            manager.data.player.specialisation.eggplant.GainExp(500);
+        else if (vegetebalId == 4)
+            manager.data.player.specialisation.turnip.GainExp(500);
+        else if (vegetebalId == 5)
+            manager.data.player.specialisation.pumpkin.GainExp(500);
     }
 
     private void Load()
@@ -161,7 +185,7 @@ public class DpSManager : MonoBehaviour
             }
         }
         var formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(manager.data.dpSDictionaryLocation, FileMode.Open);
+        FileStream stream = new FileStream(manager.data.dpSDictionaryLocation, FileMode.OpenOrCreate);
         formatter.Serialize(stream, DpS);
         stream.Close();
     }

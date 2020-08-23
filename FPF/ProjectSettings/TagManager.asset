@@ -8,6 +8,9 @@ TagManager:
   - Seed
   - Dirt
   - Plant
+  - Animal
+  - AnimalModel
+  - Farm
   layers:
   - Default
   - TransparentFX

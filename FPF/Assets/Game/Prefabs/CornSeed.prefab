@@ -55,7 +55,8 @@ MonoBehaviour:
   gt: {fileID: 0}
   m: {fileID: 0}
   plant: {fileID: 3885017933677996669}
-  fruit: {fileID: 1000012087161104, guid: 8490d29919917de4ca0c5297d93090d7, type: 3}
+  hudPrefab: {fileID: 7106896645837926288, guid: b020dd4911359a54d9a051844eb63d54,
+    type: 3}
   timer: 0
   totalTimer: 1600
   actualHumidity: 50

@@ -6,6 +6,7 @@ public class SaveFormat
     public SaveFormat_Time time = new SaveFormat_Time();
     public SaveFormat_Weather weather = new SaveFormat_Weather();
     public SaveFormat_Player player = new SaveFormat_Player();
+    public string farmDictionaryLocation;
     public string dpSDictionaryLocation;
 }
 
@@ -26,6 +27,14 @@ public class SaveFormat_Weather
     public int humidity = 40;
     public int wind = 0;
     public int degree = 20;
+    public SaveFormat_Disaster disaster = new SaveFormat_Disaster();
+}
+
+[System.Serializable]
+public class SaveFormat_Disaster
+{
+    public float timerLeft = 0f;
+    public int id = 0;
 }
 
 [System.Serializable]
@@ -96,4 +105,20 @@ public class SaveFormat_Seed
     public int degreeMax = 0;
     public int windLimit = 0;
     public int resistance = 0;
+}
+
+[System.Serializable]
+public class SaveFormat_Animal
+{
+    public float posX = 0;
+    public float posY = 0;
+    public float posZ = 0;
+    public float growthTime = 1200;
+    public float actualGrowthTime = 0;
+    public float RPR = 1200;
+    public float actualRPT= 0;
+    public bool adult = false;
+    public bool ressource = false;
+    public int food = 50;
+    public int id = -1;
 }

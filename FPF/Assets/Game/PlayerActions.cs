@@ -131,14 +131,18 @@ public class PlayerActions : MonoBehaviour
                     DpsM.RecoltPlant(go);
                 else if (go.tag == "Farm" && Input.GetKeyDown(KeyCode.E))
                     go.GetComponent<FarmHUD>().ShowHUD();
-                //else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.E))
-                //    go.GetComponent<Animal>().dropRessource();
+                else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.E))
+                    go.GetComponent<Animal>().dropRessource();
                 else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.K))
                     go.GetComponent<Animal>().kill();
                 else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.B))
                     bs.Breed(go.name);
                 else if (go.tag == "Animal" && Input.GetMouseButtonDown(0))
                     feedAnimal(go);
+                else if (go.tag == "Tree" && Input.GetMouseButtonDown(0) && item.Name == "Axe")
+                    go.GetComponent<Tree>().cutDownTree();
+                else if (go.tag == "rock" && Input.GetMouseButtonDown(0) && item.Name == "PickAxe")
+                    go.GetComponent<Tree>().cutDownTree();
             }
         }
     }

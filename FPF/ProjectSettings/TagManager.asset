@@ -11,6 +11,8 @@ TagManager:
   - Animal
   - AnimalModel
   - Farm
+  - Tree
+  - rock
   layers:
   - Default
   - TransparentFX

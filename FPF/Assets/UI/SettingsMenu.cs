@@ -15,7 +15,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown("escape") && !settingsMenu.activeInHierarchy)
+        if (Input.GetKeyDown("space") && !settingsMenu.activeInHierarchy)
             settingsMenu.SetActive(true);
         else if (Input.GetKeyDown("escape") && settingsMenu.activeInHierarchy)
             settingsMenu.SetActive(false);

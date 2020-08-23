@@ -12,7 +12,8 @@ public class Seed : MonoBehaviour
     [SerializeField] private GlobalTime gt;
     [SerializeField] private Manager m;
     [SerializeField] private GameObject plant;
-    [SerializeField] private GameObject fruit;
+    [SerializeField] private GameObject hudPrefab;
+    private GameObject hud;
     public float timer = 0;
     public float totalTimer = 0;
     public int actualHumidity = 0;
@@ -61,6 +62,8 @@ public class Seed : MonoBehaviour
         m = GameObject.Find("GameManager").GetComponent<Manager>();
         gt = GameObject.Find("GlobalSystem").GetComponent<GlobalTime>();
 
+        hud = Instantiate(hudPrefab, FindObjectOfType<Canvas>().transform);
+        hud.transform.localScale = new Vector3(0.35f, 0.35f, 1);
         if (timer != 0)
             return;
 
@@ -91,11 +94,16 @@ public class Seed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hud.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.5f, 0));
         Humidity();
         if (timer < totalTimer)
         {
             if (checkDeath())
+            {
+                Destroy(hud);
                 Destroy(transform.parent.gameObject);
+                return;
+            }
             if (gt.hour >= 6 && gt.hour <= 20)
                 timer += Time.deltaTime * gt.daySpeed;
             else
@@ -105,8 +113,13 @@ public class Seed : MonoBehaviour
         } else
         {
             if (checkDeath() || m.data.weather.wind >= windLimit)
+            {
+                Destroy(hud);
                 Destroy(transform.parent.gameObject);
+            }
         }
+        hud.GetComponent<PlantHUD>().UpdateHumidity(humidity);
+        hud.GetComponent<PlantHUD>().UpdateTimer(totalTimer - timer);
     }
 
     private bool checkDeath()

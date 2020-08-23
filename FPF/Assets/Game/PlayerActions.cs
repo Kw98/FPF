@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerActions : MonoBehaviour
 {
     [SerializeField] private DpSManager DpsM;
+    [SerializeField] private BreedingSystem bs;
     [SerializeField] private InvenotryManager inventory;
     [SerializeField] private string[] terrainTool;
     public Item item;
@@ -37,8 +38,7 @@ public class PlayerActions : MonoBehaviour
             SeedPlanting(4);
         else if (item.Name == "PumpkinSeed")
             SeedPlanting(5);
-        else
-            recolt();
+        Action();
     }
 
     private void SeedPlanting(int vegetebalId)
@@ -113,7 +113,7 @@ public class PlayerActions : MonoBehaviour
             DpsM.HumidifyPlant(go);
     }
 
-    private void recolt()
+    private void Action()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -123,16 +123,41 @@ public class PlayerActions : MonoBehaviour
             if (hit.transform != null)
             {
                 GameObject go = hit.transform.gameObject;
-                if (go.tag != "Dirt" && go.tag != "Seed" && go.tag != "Plant")
-                    return;
-                if (go.tag == "Plant")
-                    go = go.transform.parent.gameObject;
-                if (go.tag == "Seed")
-                    go = go.transform.parent.gameObject;
-                if (Input.GetMouseButtonDown(0))
-                    DpsM.RecoltPlant(go);
+                if (go.tag == "Plant" && Input.GetMouseButtonDown(0))
+                    DpsM.RecoltPlant(go.transform.parent.gameObject.transform.parent.gameObject);
+                else if (go.tag == "Seed" && Input.GetMouseButtonDown(0))
+                    DpsM.RecoltPlant(go.transform.parent.gameObject);
+                else if (go.tag == "Farm" && Input.GetKeyDown(KeyCode.E))
+                    go.GetComponent<FarmHUD>().ShowHUD();
+                //else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.E))
+                //    go.GetComponent<Animal>().dropRessource();
+                else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.K))
+                    go.GetComponent<Animal>().kill();
+                else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.B))
+                    bs.Breed(go.name);
+                else if (go.tag == "Animal" && Input.GetMouseButtonDown(0))
+                    feedAnimal(go);
             }
         }
+    }
+
+    private void feedAnimal(GameObject go)
+    {
+        if (item.Name == "Carrot")
+            go.GetComponent<Animal>().stat.food += 20;
+        else if (item.Name == "Corn")
+            go.GetComponent<Animal>().stat.food += 35;
+        else if (item.Name == "Eggplant")
+            go.GetComponent<Animal>().stat.food += 5;
+        else if (item.Name == "Pumpkin")
+            go.GetComponent<Animal>().stat.food += 65;
+        else if (item.Name == "Turnip")
+            go.GetComponent<Animal>().stat.food += 5;
+        else if (item.Name == "Tomato")
+            go.GetComponent<Animal>().stat.food += 20;
+
+        if (go.GetComponent<Animal>().stat.food > 100)
+            go.GetComponent<Animal>().stat.food = 100;
     }
 
 }

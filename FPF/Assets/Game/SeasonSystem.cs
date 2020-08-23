@@ -41,6 +41,11 @@ public class SeasonSystem : MonoBehaviour
             weatherUpdated = false;
     }
 
+    public void UpdateHUD()
+    {
+        wHUD.UpdateWeatherHUD();
+    }
+
     void UpdateWeather()
     {
         Season season = seasons[m.data.time.season];

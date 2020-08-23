@@ -48,8 +48,10 @@ MonoBehaviour:
   animal: {fileID: 1610786572798652}
   hudPrefab: {fileID: 6333614580906865145, guid: 7a4d9372d7ccf49498de204e5be74613,
     type: 3}
-  ressourcePrefab: {fileID: 0}
-  meatPrefab: {fileID: 0}
+  ressourcePrefab: {fileID: 1507710586820839715, guid: 15289bce4d7f3724e87ba007cf1a701c,
+    type: 3}
+  meatPrefab: {fileID: 1507710586820839715, guid: 15289bce4d7f3724e87ba007cf1a701c,
+    type: 3}
   spec:
     actualExp: 0
     actualLvl: 1

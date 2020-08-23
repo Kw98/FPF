@@ -146,6 +146,7 @@ public class Seed : MonoBehaviour
 
     public void Humidify()
     {
+        Debug.Log("HUMID");
         humidity = 100f;
         actualHumidity = 100;
     }

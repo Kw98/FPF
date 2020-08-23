@@ -23,6 +23,8 @@ public class InvenotryManager : MonoBehaviour
                 money = inventory.Container.Items[i].GetAmount();
                 return;
             }
+            else
+                money = 0;
         }
     }
 

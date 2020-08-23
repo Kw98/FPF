@@ -94,9 +94,9 @@ public class DisasterSystem : MonoBehaviour
         {
             if (dp.Value.vegetebalId != -1)
             {
-                Seed s = GameObject.Find(dp.Key.ToString("D6")).GetComponentInChildren<Seed>().transform.GetChild(0).gameObject.GetComponent<Seed>();
-                if (s.actualHumidity >= 100)
-                    Destroy(GameObject.Find(dp.Key.ToString("D6")));
+//                Seed s = GameObject.Find(dp.Key.ToString("D6")).GetComponentInChildren<Seed>().transform.GetChild(0).gameObject.GetComponent<Seed>();
+  //              if (s.actualHumidity >= 100)
+    //                Destroy(GameObject.Find(dp.Key.ToString("D6")));
             }
         }
     }

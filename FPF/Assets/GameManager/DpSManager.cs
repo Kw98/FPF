@@ -28,8 +28,7 @@ public class DpSManager : MonoBehaviour
 
     private void Update()
     {
-        var toRemove = DpS.Where(pair => !GameObject.Find(pair.Key.ToString("D6"))).ToList();
-        foreach (var v in toRemove)
+        foreach (var v in DpS.Where(pair => GameObject.Find(pair.Key.ToString("D6")) == null).ToList())
             DpS.Remove(v.Key);
     }
 
@@ -62,7 +61,8 @@ public class DpSManager : MonoBehaviour
                 SaveFormat_DirtPile sfdp = dp.Value;
                 sfdp.vegetebalId = vegetebalId;
                 DpS[dp.Key] = sfdp;
-                Instantiate(seedPrefabs[dp.Value.vegetebalId], dirtpile.transform);
+                GameObject seed = Instantiate(seedPrefabs[dp.Value.vegetebalId], dirtpile.transform);
+                seed.transform.SetParent(dirtpile.transform);
                 return true;
             } else if (dirtpile.name == dp.Key.ToString("D6") && dp.Value.vegetebalId != -1)
                 return false;
@@ -111,14 +111,13 @@ public class DpSManager : MonoBehaviour
                         Vector3 basepos = go.transform.position;
                         for (int f = 0; f < recolts["fruit"]; f++)
                             Instantiate(fruitItemPrefabs[dp.Value.vegetebalId], new Vector3(basepos.x + f / 5, basepos.y + f / 5, basepos.z + f / 5), Quaternion.identity);
-                        //for (int f = 0; f < recolts["seed"]; f++)
-                        //    Instantiate(seedItemPrefabs[dp.Value.vegetebalId], new Vector3(basepos.x + f / 8, basepos.y + f / 8, basepos.z + f / 8), Quaternion.identity);
                         recolted = true;
                         key = dp.Key;
                         LvlUpSpec(dp.Value.vegetebalId);
+                        break;
                     }
                 }
-                return;
+                break;
             }
         }
         if (recolted)

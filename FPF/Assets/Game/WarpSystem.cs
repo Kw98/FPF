@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class WarpSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject TpTo;
+    [SerializeField] private Transform tr;
+    [SerializeField] private GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("trigger: " + other.gameObject.name);
-        //Debug.Log("parent: " + other.gameObject.transform.parent.name);
-        Debug.Log("before pos: " + other.gameObject.transform.position);
-        other.gameObject.transform.position = TpTo.transform.position;
-        Debug.Log("after pos: " + other.gameObject.transform.position);
+       player.transform.position = tr.position;
     }
 }

@@ -110,8 +110,7 @@ public class BreedingSystem : MonoBehaviour
 
     private void ClearDead()
     {
-        var toRemove = animals.Where(pair => !GameObject.Find(pair.Key)).ToList();
-        foreach (var v in toRemove)
+        foreach (var v in animals.Where(pair => GameObject.Find(pair.Key) == null).ToList())
         {
             positions.Enqueue(new Vector3(v.Value.posX, v.Value.posY, v.Value.posZ));
             --current;

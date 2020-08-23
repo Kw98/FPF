@@ -52,7 +52,7 @@ public class PlayerActions : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag != "Dirt")
                     return;
-                if (DpsM.PlantOnDirtPile(hit.transform.gameObject, vegetebalId))
+                if (Input.GetMouseButtonDown(0) && DpsM.PlantOnDirtPile(hit.transform.gameObject, vegetebalId))
                 {
                     inventory.inventory.RemoveItem(item, 1);
                 }
@@ -123,10 +123,12 @@ public class PlayerActions : MonoBehaviour
             if (hit.transform != null)
             {
                 GameObject go = hit.transform.gameObject;
-                if (go.tag == "Plant" && Input.GetMouseButtonDown(0))
+                if (go.tag == "Plant" && Input.GetKeyDown(KeyCode.E))
                     DpsM.RecoltPlant(go.transform.parent.gameObject.transform.parent.gameObject);
-                else if (go.tag == "Seed" && Input.GetMouseButtonDown(0))
+                else if (go.tag == "Seed" && Input.GetKeyDown(KeyCode.E))
                     DpsM.RecoltPlant(go.transform.parent.gameObject);
+                else if (go.tag == "Dirt" && Input.GetKeyDown(KeyCode.E))
+                    DpsM.RecoltPlant(go);
                 else if (go.tag == "Farm" && Input.GetKeyDown(KeyCode.E))
                     go.GetComponent<FarmHUD>().ShowHUD();
                 //else if (go.tag == "Animal" && Input.GetKeyDown(KeyCode.E))

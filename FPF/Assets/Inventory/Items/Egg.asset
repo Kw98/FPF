@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a19cd8ef277d0c4ba682129da249c62, type: 3}
   m_Name: Egg
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 0}
+  Id: 19
+  uiDisplay: {fileID: -5183978504928954564, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
+    type: 3}
   type: 0
   description: 
   buffs: []

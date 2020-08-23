@@ -15,7 +15,7 @@ public class PlayerActions : MonoBehaviour
 
     void Update()
     {
-        //item = inventory.itemequiped;
+        item = inventory.itemequiped;
         if (dirtPilePreview != null)
         {
             if (item.Name != "Hoe")
@@ -26,17 +26,17 @@ public class PlayerActions : MonoBehaviour
         }
         if (terrainTool.Contains(item.Name))
             TerrainTool();
-        else if (item.Name == "CarrotSeed")
+        else if (item.Name == "seed_carrot")
             SeedPlanting(0);
-        else if (item.Name == "TomatoSeed")
+        else if (item.Name == "seed_tomato")
             SeedPlanting(1);
-        else if (item.Name == "CornSeed")
+        else if (item.Name == "seed_corn")
             SeedPlanting(2);
-        else if (item.Name == "EggplantSeed")
+        else if (item.Name == "seed_eggplant")
             SeedPlanting(3);
-        else if (item.Name == "TurnipSeed")
+        else if (item.Name == "seed_turnip")
             SeedPlanting(4);
-        else if (item.Name == "PumpkinSeed")
+        else if (item.Name == "seed_pumpkin")
             SeedPlanting(5);
         Action();
     }
@@ -54,7 +54,7 @@ public class PlayerActions : MonoBehaviour
                     return;
                 if (DpsM.PlantOnDirtPile(hit.transform.gameObject, vegetebalId))
                 {
-                    // est planté il faut que tu delete l'item de l'inventaire ou que tu réduit le stack de 1
+                    inventory.inventory.RemoveItem(item, 1);
                 }
 
             }

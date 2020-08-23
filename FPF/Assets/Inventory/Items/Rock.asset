@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a19cd8ef277d0c4ba682129da249c62, type: 3}
-  m_Name: Milk
+  m_Script: {fileID: 11500000, guid: 70b0e29dfdc66a34d919414022de3e6c, type: 3}
+  m_Name: Rock
   m_EditorClassIdentifier: 
-  Id: 15
-  uiDisplay: {fileID: -5448086938416646657, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
+  Id: 10
+  uiDisplay: {fileID: -5855690042751787076, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
     type: 3}
-  type: 0
+  type: 2
   description: 
   buffs: []

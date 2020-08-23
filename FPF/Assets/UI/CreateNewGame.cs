@@ -12,6 +12,7 @@ public class CreateNewGame : MonoBehaviour
     {
         GameObject gm = GameObject.Find("GameManager");
         gm.GetComponent<Manager>().NewGame(input.text);
-        SceneManager.LoadScene("Map_begin");
+        SceneManager.LoadScene("PlayerSettings");
+        //SceneManager.LoadScene("Map_begin");
     }
 }

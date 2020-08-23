@@ -6,20 +6,33 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject Player;
     public CharacterController controller;
     public float speed;
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
     public Transform cam;
     private Animator animator;
+    private Manager manager;
+    public Texture[] texture;
 
     void Start()
     {
+        if (!GameObject.Find("GameManager"))
+        {
+            Destroy(this);
+            return;
+        }
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
+        Player.GetComponent<Renderer>().material.mainTexture = texture[manager.data.player.playerSkin];
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         animator = GetComponent<Animator>();
+
+
     }
 
     // Update is called once per frame

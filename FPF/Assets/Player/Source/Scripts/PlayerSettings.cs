@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSettings : MonoBehaviour
 
@@ -9,11 +10,16 @@ public class PlayerSettings : MonoBehaviour
     public Texture[] texture;
     public int currentTexture;
     public GameObject Player;
-    private 
+    private Manager manager;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (!GameObject.Find("GameManager"))
+        {
+            Destroy(this);
+            return;
+        }
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
     }
 
     // Update is called once per frame
@@ -41,7 +47,9 @@ public class PlayerSettings : MonoBehaviour
 
     public void CreatePlayer()
     {
-     
+
+        manager.data.player.playerSkin = currentTexture;
+        SceneManager.LoadScene("Map_begin");
     }
 
 

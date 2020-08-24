@@ -10,7 +10,7 @@ public class Sellitem : MonoBehaviour
     public GameObject displayDialogue;
     private bool active = false;
     public InventoryObject inventory;
-    public ItemObject money;
+    public ItemObject moneyItem;
     public string NpcItem;
     public ItemObject NpcItemSell;
     public bool friendly = false;
@@ -19,60 +19,65 @@ public class Sellitem : MonoBehaviour
     public Sprite newicon;
     public TextMeshProUGUI frelndlyText;
     public int prize;
+    public GameObject inventoryManager;
+    private int money;
+    public AudioSource voice;
     // Start is called before the first frame update
     void Start()
     {
-        
+        voice.Stop();
+        money = inventoryManager.GetComponent<InvenotryManager>().money;
     }
 
     // Update is called once per frame
     void Update()
     {
+        money = inventoryManager.GetComponent<InvenotryManager>().money;
         if (Input.GetKeyDown("c"))
         {
-           
-            for (int a = 0; a < inventory.Container.Items.Length; a++)
+            if (active == true)
             {
-                if (inventory.Container.Items[a].ID == 0)
+                if (money >= 1)
                 {
-                    if (inventory.Container.Items[a].GetAmount() >= 1)
-                    {
-                        print(inventory.Container.Items[a].GetAmount());
-                        inventory.RemoveItem(inventory.Container.Items[a].item, 1);
-                        inventory.AddItem(new Item(NpcItemSell), 1);
-                    }
+                    inventory.RemoveItem(new Item(moneyItem), 1);
+                    inventory.AddItem(new Item(NpcItemSell), 1);
                     return;
                 }
             }
-            
         }
         if (Input.GetKeyDown("x"))
         {
-            for (int i = 0; i < inventory.Container.Items.Length; i++)
+            if (active == true)
             {
-                if (inventory.Container.Items[i].GetName() == NpcItem)
+                for (int i = 0; i < inventory.Container.Items.Length; i++)
                 {
-                    inventory.AddItem(new Item(money), prize);
-                    inventory.RemoveItem(inventory.Container.Items[i].item, 1);
-                    return;
+                    if (inventory.Container.Items[i].GetName() == NpcItem)
+                    {
+                        inventory.AddItem(new Item(moneyItem), prize);
+                        inventory.RemoveItem(inventory.Container.Items[i].item, 1);
+                        return;
 
+                    }
                 }
             }
         }
         if (Input.GetKeyDown("m"))
         {
-            activeQuete.SetActive(true);
-            for (int i = 0; i < inventory.Container.Items.Length; i++)
+            if (active == true)
             {
-                if (inventory.Container.Items[i].GetName() == "Quete")
+                activeQuete.SetActive(true);
+                for (int i = 0; i < inventory.Container.Items.Length; i++)
                 {
-                    inventory.RemoveItem(inventory.Container.Items[i].item, 1);
-                    validatequete();
-                    return;
+                    if (inventory.Container.Items[i].GetName() == "Quete")
+                    {
+                        inventory.RemoveItem(inventory.Container.Items[i].item, 1);
+                        validatequete();
+                        return;
+                    }
                 }
+
+
             }
-
-
         }
 
       
@@ -97,7 +102,8 @@ public class Sellitem : MonoBehaviour
                 Cursor.visible = true;
             }
             displayDialogue.SetActive(active);
-            TriggerDialogue();
+            voice.Play();
+            //TriggerDialogue();
         }
     }
 
@@ -118,6 +124,7 @@ public class Sellitem : MonoBehaviour
                 Cursor.visible = true;
             }
             displayDialogue.SetActive(active);
+            voice.Stop();
         }
     }
 
